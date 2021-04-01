@@ -1,10 +1,14 @@
 #! /usr/bin/env python
 
-# Takes in desired pose and return joint positions as a response
-import numpy as np
-from math import pow, sqrt, atan2
+#!/usr/bin/env python
 
-xc = 3
+from __future__ import print_function
+
+from beginner_tutorials.srv import AddTwoInts,AddTwoIntsResponse
+import rospy
+
+def calculate_joint_angles(req):
+    xc = 3
 yc = 1
 zc = 5
 
@@ -30,6 +34,13 @@ theta2 = theta12 - theta1
 d3 = -zc
 
 print('Theta1, theta2 and d3 are:', theta1, theta2, d3)
+
+
+
+import numpy as np
+from math import pow, sqrt, atan2
+
+
 
 # import rospy
 # from std_msgs.msg import String
