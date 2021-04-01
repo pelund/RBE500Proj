@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import sys
 import rospy
+from rbe_proj.srv import JointVarCalc
 
 
 def joint_var_calc_client(xc, yc, zc,a1,a2,d3):
@@ -9,7 +10,7 @@ def joint_var_calc_client(xc, yc, zc,a1,a2,d3):
     try:
         joint_var_calc = rospy.ServiceProxy('joint_var_calc', JointVarCalc)
         
-        resp1 = joint_var_calc(xc, yc, zc,a1,a2,d3out)
+        resp1 = joint_var_calc(xc, yc, zc,a1,a2, d3)        # changed from d3out to d3
         return resp1
     except rospy.ServiceException as e:
         print("Service call failed: %s"%e)
@@ -31,4 +32,4 @@ if __name__ == "__main__":
         print(usage())
         sys.exit(1)
     print("Requesting %s,%s,%s,%s,%s,%s"%(xc, yc, zc,a1,a2,d3))
-    print("%%s,%s,%s,%s,%s,%s => %s, %s, %s"%(xc, yc, zc,a1,a2,d3 joint_var_calc_client(xc, yc, zc,a1,a2,d3)))
+    print("%%s,%s,%s,%s,%s,%s => %s, %s, %s"%(xc, yc, zc,a1,a2,d3, joint_var_calc_client(xc, yc, zc,a1,a2,d3)))

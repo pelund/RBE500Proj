@@ -1,10 +1,10 @@
-float xc
-float yc
-float zc
-float a1
-float a2
-float d3
-—
-float theta1
-float theta2
-float d3out
+float64 xc
+float64 yc
+float64 zc
+float64 a1
+float64 a2
+float64 d3
+---
+float64 theta1
+float64 theta2
+float64 d3out

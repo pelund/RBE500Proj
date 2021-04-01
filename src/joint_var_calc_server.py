@@ -1,13 +1,17 @@
 ##takes in end effector locations and returns joint values
 import rospy
+from rbe_proj.srv import JointVarCalc
+from math import atan2
+from math import sqrt
 
 def handle_joint_var_calc(req):
-    xc = req.xc,
+    xc = req.xc
     yc = req.yc
     zc = req.zc
     a1 = req.a1
     a2 = req.a2
     d3 = req.d3
+
     r = (pow(xc, 2) + pow(yc, 2) - pow(a1, 2) - pow(a2, 2)) / 2*a1
     # print(r)
     D1_b = -(2 * r * xc)
