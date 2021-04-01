@@ -1,6 +1,6 @@
 ##takes in end effector locations and returns joint values
 import rospy
-from rbe_proj.srv import JointVarCalc
+from rbe_proj.srv import JointVarCalc, JointVarCalcResponse
 from math import atan2
 from math import sqrt
 
@@ -26,7 +26,7 @@ def handle_joint_var_calc(req):
     theta12 = atan2(sqrt(1 - pow(D12, 2)), D12)
     theta2 = theta12 - theta1
     d3out = -zc
-    print("Returning %%s,%s,%s,%s,%s,%s => %s, %s, %s"%(req.xc, req.yc, req.zc, req.a1, req.a2, req.d3, theta1, theta2, d3out))
+    print("Returning :", req.xc, req.yc, req.zc, req.a1, req.a2, req.d3, theta1, theta2, d3out)
     return JointVarCalcResponse(theta1,theta2,d3out)
 
 def joint_var_calc_server():

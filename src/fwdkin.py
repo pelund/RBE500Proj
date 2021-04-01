@@ -23,7 +23,7 @@ def Forward_kinematics(msg):
 
     T = {}
     thetas = np.empty(3)
-    theta_vals = [theta1,theta2, theta3]
+    theta_vals = [theta1,theta2, 0]
     D = [L1, 0, d3 + L3]
     A = [L2, L3, 0]
     ALPHAS = [0,pi,0]
@@ -56,6 +56,7 @@ def Forward_kinematics(msg):
     End_effector_Actual.publish(EEF)
 
     print('Verified positions are: ', np.round(EEF.position.x), np.round(EEF.position.y), np.round(EEF.position.z))
+    
 def DH_matrix(theta, d, a, alpha):
     T_theta = [[np.cos(theta), -np.sin(theta), 0, 0],
                 [np.sin(theta), np.cos(theta), 0, 0],
