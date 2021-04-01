@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/grystrion/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/grystrion/catkin_ws/src/RBE500HW3/include/**",
+        "/home/grystrion/catkin_ws/src/RBE500Proj1/include/**",
+        "/home/grystrion/catkin_ws/src/RBEProj/include/**",
+        "/home/grystrion/catkin_ws/src/RBEProj1/include/**",
+        "/home/grystrion/catkin_ws/src/learning_tf/include/**",
+        "/home/grystrion/catkin_ws/src/quat_to_euler/include/**",
+        "/home/grystrion/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/grystrion/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/home/grystrion/catkin_ws/src/turtlebot3/turtlebot3_slam/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
