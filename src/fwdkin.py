@@ -1,4 +1,3 @@
-
 #! /usr/bin/env python
 
 #subscribes to the joint values topic ead from gazebo
