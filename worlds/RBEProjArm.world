@@ -937,7 +937,7 @@
     <state world_name='default'>
       <sim_time>0 0</sim_time>
       <real_time>0 0</real_time>
-      <wall_time>1617238750 581453535</wall_time>
+      <wall_time>1617240842 861779698</wall_time>
       <iterations>0</iterations>
       <model name='RBEProjArm'>
         <pose frame=''>3.28571 0 4.12857 0 -0 0</pose>
