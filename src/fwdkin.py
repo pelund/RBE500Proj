@@ -4,14 +4,22 @@
 #calculate end effector pose
 #publish pose as a ros ropic (in callback that reads joint values)
 
+import numpy as np
 import rospy
 from std_msgs.msg import String
+from geometry_msgs.msg import Pose
+from sensor_msgs.msg import JointState
+from math import pi 
 
 def Forward_kinematics(msg):
 
     theta1 = msg.position[0]
     theta2 = msg.position[1]
     d3 = msg.position[2]
+
+    L1 = 2
+    L2 = 2
+    L3 = 1
 
     T = {}
     thetas = np.empty(3)
@@ -72,11 +80,6 @@ def DH_matrix(theta, d, a, alpha):
     return T
 if __name__ == '__main__':
 
-    rospy.init_node('fwdkin')    
-    # print('Please enter the positions:')
-    # x, y, z = input().split(' ')
-
-    #IK_sub = rospy.Subscriber("inverse_kinematics", Pose, Inverse_Kinematics, queue_size=1)
+    rospy.init_node('fwdkin')
     FK_sub = rospy.Subscriber("joint_states", JointState, Forward_kinematics, queue_size=1)
-    #Inverse_velocity_sub = rospy.Subscriber("inverse_velocity", Twist, Inverse_velocity, queue_size=1)
     rospy.spin()
