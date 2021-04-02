@@ -17,9 +17,9 @@ def Forward_kinematics(msg):
     theta2 = msg.position[1]
     d3 = msg.position[2]
 
-    L1 = 2
-    L2 = 2
-    L3 = 1
+    L1 = 5.5
+    L2 = 6
+    L3 = .6
 
     T = {}
     thetas = np.empty(3)
