@@ -5,7 +5,7 @@
      			<geometry>
        				<box size="0.2 .3 .1"/>
      			</geometry>
-			<origin rpy="0 0 0" xyz="0 0 0.05"/>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<material name="white">
 				<color rgba="1 1 1 1"/>
 			</material>
@@ -19,5 +19,33 @@
 			<mass value="100"/>
 	 		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
 		</inertial>			
- 	</link>
+   </link>
+
+   <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <origin rpy="0  0  0" xyz="0 0 0.1"/>
+    <axis xyz="0  0  1"/>
+    <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
+  </joint>
+   
+   <link name="link_1">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
+    </inertial>
+    <collision name="Better_Robot_Arm__collision">
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.5"/>
+      </geometry>
+    </collision>
+    <visual name="Better_Robot_Arm__visual">
+      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.2" radius="0.1"/>
+      </geometry>
+    </visual>
+  </link>
 </robot>
