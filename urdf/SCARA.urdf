@@ -3,7 +3,7 @@
 	<link name="base_link">
    		<visual>
      			<geometry>
-       				<box size="0.2 .3 .1"/>
+       				<box size="0 0 0"/>
      			</geometry>
 			<origin rpy="0 0 0" xyz="0 0 0"/>
 			<material name="white">
@@ -12,19 +12,19 @@
    		</visual>
 		<collision>
 			<geometry>
-       				<box size="0.2 .3 0.1"/>
+       				<box size="0 0 0"/>
 			</geometry>
 		</collision>
-		<inertial>
+		<!-- <inertial>
 			<mass value="100"/>
 	 		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
-		</inertial>			
+		</inertial>			 -->
    </link>
 
-   <joint name="joint_1" type="revolute">
+   <joint name="joint_1" type="fixed">
     <parent link="base_link"/>
     <child link="link_1"/>
-    <origin rpy="0  0  0" xyz="0 0 0.1"/>
+    <origin rpy="0  0  0" xyz="0 0 1"/>
     <axis xyz="0  0  1"/>
     <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
   </joint>
@@ -36,20 +36,20 @@
       <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
     </inertial>
     <collision name="Better_Robot_Arm__collision">
-      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <origin rpy="0  0  0" xyz="0 0 2.5"/>
       <geometry>
         <cylinder length="4.9" radius="0.5"/>
       </geometry>
     </collision>
     <visual name="Better_Robot_Arm__visual">
-      <origin rpy="0  0  0" xyz="0 0 0"/>
+      <origin rpy="0  0  0" xyz="0 0 2.5"/>
       <geometry>
-        <cylinder length="4.9" radius="0.5"/>
+        <cylinder length="5" radius="0.3"/>
       </geometry>
     </visual>
   </link>
   
-  <joint name="joint_2" type="fixed">
+  <joint name="joint_2" type="revolute">
     <parent link="link_1"/>
     <child link="link_2"/>
     <origin rpy="0    1.57  0" xyz="0 0 5.5"/>
@@ -77,7 +77,7 @@
     </visual>
   </link>
 
-  <joint name="joint_3" type="fixed">
+  <!-- <joint name="joint_3" type="fixed">
     <parent link="link_2"/>
     <child link="link_3"/>
     <origin rpy="0    1.57  0" xyz="2.99999  0       0"/>
@@ -103,5 +103,5 @@
         <cylinder length="5" radius="0.5"/>
       </geometry>
     </visual>
-  </link>
+  </link>  -->
 </robot>
