@@ -77,10 +77,10 @@
     </visual>
   </link>
 
-  <!-- <joint name="joint_3" type="fixed">
+ <joint name="joint_3" type="fixed">
     <parent link="link_2"/>
     <child link="link_3"/>
-    <origin rpy="0    1.57  0" xyz="2.99999  0       0"/>
+    <origin rpy="0    1.57  0" xyz="0.5  0       5.5"/>
     <axis xyz="0  0  0"/>
     <limit effort="0" lower="0" upper="0" velocity="0"/>
   </joint>
@@ -103,5 +103,5 @@
         <cylinder length="5" radius="0.5"/>
       </geometry>
     </visual>
-  </link>  -->
+  </link>
 </robot>
