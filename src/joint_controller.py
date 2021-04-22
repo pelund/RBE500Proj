@@ -8,7 +8,7 @@ import gazebo_msgs
 
 #This function will send the joint values with /gazebo/apply_joint_effort
 def send_joint_efforts(effort):
-    apply_effort = rospy.ServiceProxy("gazebo_msgs/apply_joint_effort", ApplyJointEffort)
+    apply_effort = rospy.ServiceProxy("/gazebo/apply_joint_effort", ApplyJointEffort)
     apply_effort (joint6,effort,rospy.Time(),rospy.Duration(1))
     #message fields: "joint_name: 'joint2', effort: 10.0, start_time: secs: 0 nsecs: 0,duration: secs: 10 nsecs: 0"
 
@@ -31,7 +31,7 @@ global old_error = 100000
 global error = 100000
 position_reached = False
 while position_reached == False:
-    joint_properties = rospy.ServiceProxy('gazebo_msgs/get_joint_properties',GetJointProperties)
+    joint_properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
     current_joint_properties =joint_properties('joint_6')
     current_joint_position = current_joint_properties.position
     desired_joint_position = void #response from goal point service will go here
