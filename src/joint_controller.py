@@ -5,6 +5,7 @@ import gazebo_msgs
 #Docs were hard to find, were not on wiki but somewhere else
 from gazebo_msgs.srv import GetJointProperties
 from gazebo_msgs.srv import ApplyJointEffort
+import os
 
 #This function will send the joint values with /gazebo/apply_joint_effort
 class PD_Controller:
@@ -21,6 +22,9 @@ class PD_Controller:
         #message fields: "joint_name: 'joint2', effort: 10.0, start_time: secs: 0 nsecs: 0,duration: secs: 10 nsecs: 0"
 
     def PD(self, current, desired):
+
+        catkin_pkg = os.getenv('ROS_PACKAGE_PATH').split(':')
+        catkin_pkg = str(catkin_pkg[0])
         self.current = current
         Kp = .06
         #Ku = Kp/0.6
@@ -29,11 +33,11 @@ class PD_Controller:
         Kd = 0.1
         self.error = desired - current
 
-        desired_file = open("/home/grystrion/catkin_ws/src/rbe_proj/src/desired.txt", "a")
+        desired_file = open(catkin_pkg + "/rbe_proj/src/desired.txt", "a")
         desired_file.write(str(desired) + '\n')
         desired_file.close()
 
-        current_file = open("/home/grystrion/catkin_ws/src/rbe_proj/src/current.txt", "a")
+        current_file =  desired_file = open(catkin_pkg + "/rbe_proj/src/current.txt", "a")
         current_file.write(str(current) + '\n')
         current_file.close()
 
@@ -50,8 +54,10 @@ class PD_Controller:
 #should be a subscriber
 
 if __name__ == '__main__':
-    desired_file = open("/home/grystrion/catkin_ws/src/rbe_proj/src/desired.txt", "r+")
-    current_file = open("/home/grystrion/catkin_ws/src/rbe_proj/src/current.txt", "r+")
+    catkin_pkg = os.getenv('ROS_PACKAGE_PATH').split(':')
+    catkin_pkg = str(catkin_pkg[0])
+    desired_file = open(catkin_pkg + "/rbe_proj/src/desired.txt", "r+")
+    current_file = open(catkin_pkg + "/rbe_proj/src/current.txt", "r+")
     
     desired_file.truncate(0)
     desired_file.close()
