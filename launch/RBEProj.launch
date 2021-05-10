@@ -1,4 +1,4 @@
 <launch>
-	<node name="fwdkin" pkg="RBEProj" type="fwdkin.py" args="--test" respawn="true" output="screen"/>
-	<node name="invkin" pkg="RBEProj" type="invkin.py" args="--test" respawn="true" output="screen" />
+	<node name="fwdkin" pkg="rbe_proj" type="fwdkin.py" args="--test" respawn="true" output="screen"/>
+	<node name="invkin" pkg="rbe_proj" type="invkin.py" args="--test" respawn="true" output="screen" />
 </launch>
