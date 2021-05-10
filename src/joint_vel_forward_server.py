@@ -1,11 +1,11 @@
-##takes in end effector locations and returns joint values
+##takes in end joint info and returns end effector velocities
 import rospy
-from rbe_proj.srv import JointVarCalc, JointVarCalcResponse
+from rbe_proj.srv import JointVelForward, JointVelForwardResponse
 from math import atan2
 from math import sqrt
 import numpy
 
-def handle_joint_var_calc(req):
+def handle_joint_vel_forward(req):
     vtheta1 = req.vtheta1
     vtheta2 = req.vtheta2
     vd3 = req.vd3
@@ -25,10 +25,10 @@ def handle_joint_var_calc(req):
     return JointVelForwardResponse(vx,vy,vz)
 
 def joint_var_calc_server():
-    rospy.init_node('joint_var_calc_server')
-    s = rospy.Service('joint_var_calc', JointVarCalc, handle_joint_var_calc)
-    print("Ready to do joint variable calculations.")
+    rospy.init_node('joint_vel_forward_server')
+    s = rospy.Service('joint_vel_forward', JointVelForward, handle_joint_vel_forward)
+    print("Ready to do jvf calculations.")
     rospy.spin()
 
 if __name__ == "__main__":
-    joint_var_calc_server()
+    joint_vel_forward_server()
