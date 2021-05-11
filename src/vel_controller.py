@@ -46,7 +46,7 @@ class PD_Controller:
 
         delta_error = self.error- self.old_error 
         calculated_effort = (self.Kp * self.error) + (self.Kd * delta_error) - 9.8 
-        print(self.current)
+        print(str(self.current) + " " + str(self.joint_name))
         self.send_joint_efforts(calculated_effort)
         self.old_error = self.error
         # self.osc_per = rospy.Time.now() - self.time
@@ -68,9 +68,9 @@ if __name__ == '__main__':
 
     rospy.init_node('joint_controller')
     position_reached = False
-    pd_controller1 = PD_Controller('joint_2', 30, 100)
-    pd_controller2 = PD_Controller('joint_5', 30, 100)
-    pd_controller3 = PD_Controller('joint_6', 30, 100)
+    pd_controller1 = PD_Controller('joint_2', 3000000, 1000)
+    pd_controller2 = PD_Controller('joint_5', 30, 1000000)
+    pd_controller3 = PD_Controller('joint_6', 3000000, 1000)
 
     while position_reached == False:
         joint_2properties = rospy.ServiceProxy('/gazebo/get_joint_properties', GetJointProperties)
@@ -85,9 +85,9 @@ if __name__ == '__main__':
         current_joint_5velocity = current_joint_5properties.rate[0]
         current_joint_6velocity = current_joint_6properties.rate[0]
         # print(current_joint_position)
-        desired_joint_2velocity = 0
-        desired_joint_5velocity = 0
-        desired_joint_6velocity = 0
+        desired_joint_2velocity = 1
+        desired_joint_5velocity = 1
+        desired_joint_6velocity = 1
 
         pd_controller1.PD(current_joint_2velocity, desired_joint_2velocity)
         pd_controller2.PD(current_joint_5velocity, desired_joint_5velocity)

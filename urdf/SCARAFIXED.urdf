@@ -162,7 +162,7 @@
     </visual>
   </link>
 
-  <joint name="joint_6" type="fixed">
+  <joint name="joint_6" type="prismatic">
     <parent link="link_5"/>
     <child link="link_6"/>
     <origin rpy="0  0  0" xyz="1       0      -0.6"/>
