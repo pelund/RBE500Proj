@@ -9,6 +9,6 @@
     <arg name="debug" value="false"/>
   </include>
 
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find rbe_proj)/urdf/SCARAFIXED.urdf -urdf -z 0 -model SCARAFIXED" />
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find rbe_proj)/urdf/SCARAFIXED.urdf" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find rbe_proj)/urdf/SCARA.urdf -urdf -z 0 -model SCARA" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find rbe_proj)/urdf/SCARA.urdf" />
 </launch>
