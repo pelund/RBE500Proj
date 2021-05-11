@@ -62,7 +62,6 @@ if __name__ == '__main__':
     catkin_pkg = str(catkin_pkg[0])
     desired_file = open(catkin_pkg + "/rbe_proj/src/desired.txt", "r+")
     current_file = open(catkin_pkg + "/rbe_proj/src/current.txt", "r+")
-    
     desired_file.truncate(0)
     desired_file.close()
     current_file.truncate(0)
@@ -75,9 +74,9 @@ if __name__ == '__main__':
     pd_controller3 = PD_Controller('joint_6', 30, 100)
 
     while position_reached == False:
-        joint_2properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
-        joint_5properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
-        joint_6properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
+        joint_2properties = rospy.ServiceProxy('/gazebo/get_joint_properties', GetJointProperties)
+        joint_5properties = rospy.ServiceProxy('/gazebo/get_joint_properties', GetJointProperties)
+        joint_6properties = rospy.ServiceProxy('/gazebo/get_joint_properties', GetJointProperties)
 
         current_joint_2properties = joint_2properties('joint_2')
         current_joint_5properties = joint_5properties('joint_5')
@@ -102,6 +101,3 @@ if __name__ == '__main__':
         #     print("Not there")
         
         rospy.sleep(0.1)
-
-
-    
