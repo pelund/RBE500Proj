@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import rospy
 from __future__ import print_function
+import rospy
 # import gazebo_msgs.msg
 from gazebo_msgs.srv import GetJointProperties
 from gazebo_msgs.srv import ApplyJointEffort
@@ -101,6 +101,3 @@ if __name__ == '__main__':
         #     print("Not there")
         
         rospy.sleep(0.1)
-
-
-    

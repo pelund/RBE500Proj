@@ -134,7 +134,7 @@
     </visual>
   </link>
 
-  <joint name="joint_5" type="fixed">
+  <joint name="joint_5" type="revolute">
     <parent link="link_4"/>
     <child link="link_5"/>
     <origin rpy="0  0  0" xyz="0  0  0"/>
@@ -162,7 +162,7 @@
     </visual>
   </link>
 
-  <joint name="joint_6" type="prismatic">
+  <joint name="joint_6" type="fixed">
     <parent link="link_5"/>
     <child link="link_6"/>
     <origin rpy="0  0  0" xyz="1       0      -0.6"/>
