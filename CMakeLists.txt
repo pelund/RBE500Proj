@@ -59,6 +59,8 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
   FILES
   JointVarCalc.srv
+  JointVelForward.srv
+  JointVelRev.srv
 )
 
 ## Generate actions in the 'action' folder
