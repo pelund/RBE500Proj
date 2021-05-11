@@ -45,8 +45,13 @@ class PD_Controller:
         current_file.close()
 
         delta_error = self.error- self.old_error 
-        calculated_effort = (self.Kp * self.error) + (self.Kd * delta_error) - 9.8 
-        print(self.current)
+        if(self.joint_name == 'joint_6'):
+            calculated_effort = (self.Kp * self.error) + (self.Kd * delta_error) - 9.8 
+        else:
+            calculated_effort = (self.Kp * self.error) + (self.Kd * delta_error) 
+
+        
+        print('Joint :' + str(self.joint_name) + 'at ' + str(self.current))
         self.send_joint_efforts(calculated_effort)
         self.old_error = self.error
         # self.osc_per = rospy.Time.now() - self.time
@@ -69,30 +74,30 @@ if __name__ == '__main__':
 
     rospy.init_node('joint_controller')
     position_reached = False
-    # pd_controller1 = PD_Controller('joint_2', 30, 100)
-    pd_controller2 = PD_Controller('joint_5', 3, 10)
-    # pd_controller3 = PD_Controller('joint_6', 30, 100)
+    pd_controller1 = PD_Controller('joint_2', 500, 1000)
+    pd_controller2 = PD_Controller('joint_5', 15, 30)
+    pd_controller3 = PD_Controller('joint_6', 30, 100)
 
     while position_reached == False:
-        # joint_2properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
+        joint_2properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
         joint_5properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
-        # joint_6properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
+        joint_6properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
 
-        # current_joint_2properties = joint_2properties('joint_2')
+        current_joint_2properties = joint_2properties('joint_2')
         current_joint_5properties = joint_5properties('joint_5')
-        # current_joint_6properties = joint_6properties('joint_6')
+        current_joint_6properties = joint_6properties('joint_6')
 
-        # current_joint_2position = current_joint_2properties.position[0]
+        current_joint_2position = current_joint_2properties.position[0]
         current_joint_5position = current_joint_5properties.position[0]
-        # current_joint_6position = current_joint_6properties.position[0]
+        current_joint_6position = current_joint_6properties.position[0]
         # print(current_joint_position)
-        # desired_joint_2position = 2
+        desired_joint_2position = 2
         desired_joint_5position = 1.5
-        # desired_joint_6position = 0
+        desired_joint_6position = 0
 
-        # pd_controller1.PD(current_joint_2position, desired_joint_2position)
+        pd_controller1.PD(current_joint_2position, desired_joint_2position)
         pd_controller2.PD(current_joint_5position, desired_joint_5position)
-        # pd_controller3.PD(current_joint_6position, desired_joint_6position)
+        pd_controller3.PD(current_joint_6position, desired_joint_6position)
         
         if((pd_controller2.error > 0.005)and pd_controller2.current > desired_joint_5position-.005 and pd_controller2.current < desired_joint_5position+ .005):
             print('Position reached!')
