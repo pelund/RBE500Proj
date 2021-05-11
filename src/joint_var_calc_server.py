@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 ##takes in end effector locations and returns joint values
 import rospy
 from rbe_proj.srv import JointVarCalc, JointVarCalcResponse
