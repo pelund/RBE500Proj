@@ -33,7 +33,7 @@ if __name__ == '__main__':
         current_theta2 = current_joint_5properties.position[0]
         current_vtheta2 = current_joint_5properties.rate[0]
 
-        print('Current velocities for q1, q2: ', current_vtheta1, current_vtheta2)
+        print('Current velocities for q1, q2 and their current postiions are: ', current_vtheta1, current_vtheta2, current_theta1, current_theta2)
 
         current_joint_6properties = joint_properties('joint_6')
         current_d3 = current_joint_6properties.position[0]
