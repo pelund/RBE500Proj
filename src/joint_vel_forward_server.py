@@ -19,10 +19,11 @@ def handle_joint_vel_forward(req):
     L3 = 3.75    #changed from 0.6 to 3
     J = numpy.array([[(-1*a1*numpy.sin(theta1)-a2*numpy.sin(theta1+theta2)), -1*a2*numpy.sin(theta1 + theta2), 0],[a1*numpy.cos(theta1)+a2*numpy.cos(theta1+theta2), a2 * numpy.cos(theta1 + theta2), 0] ,[0,0,-1]])
     q = numpy.array([[vtheta1],[vtheta2],[vd3]])
-    p = numpy.multiply(J,q)
-    vx = p[0,0]
-    vy = p[1,0]
-    vz = p[2,0]
+    # p = numpy.multiply(J,q)
+    p = numpy.dot(J, q)
+    vx = p[0]
+    vy = p[1]
+    vz = p[2]
     return JointVelForwardResponse(vx,vy,vz)
 
 def joint_vel_forward_server():

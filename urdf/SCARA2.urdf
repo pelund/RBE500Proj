@@ -53,9 +53,9 @@
   <joint name="joint_2" type="revolute">
     <parent link="link_1"/>
     <child link="link_2"/>
-    <origin rpy="0  0  1" xyz="0 0 5.5"/>
+    <origin rpy="0  0  1.5708" xyz="0 0 5.5"/>   <!--CHanged yaw from 1 to 0-->
     <axis xyz="0  0  1"/>
-    <limit effort="1000000" lower="-31.4" upper="31.4" velocity="1000000"/>
+    <limit effort="1000000" lower="-1" upper="1" velocity="1000000"/>
   </joint>
   
   <link name="link_2">
@@ -139,7 +139,7 @@
     <child link="link_5"/>
     <origin rpy="0  0  0" xyz="0  0  0"/>
     <axis xyz="0  0  1"/>
-    <limit effort="1000000" lower="-31.4" upper="31.4" velocity="1000000"/>   <!--changed velocity from -1 to very high-->
+    <limit effort="1000000" lower="-1" upper="1" velocity="1000000"/>   <!--changed velocity from -1 to very high-->
   </joint>
 
   <link name="link_5">
@@ -174,7 +174,7 @@
     <inertial>
       <mass value="1"/>
       <origin rpy="0  0  0" xyz="0  0  0"/>
-      <inertia ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667"/>
+      <inertia ixx="0.5" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.5"/>
     </inertial>
     <collision name="Better_Robot_Arm__collision">
       <origin rpy="0  0  0" xyz="0  0  1"/>        
