@@ -7,7 +7,7 @@ from gazebo_msgs.srv import ApplyJointEffort
 import os
 
 #This function will send the joint values with /gazebo/apply_joint_effort
-class PD_Controller:
+class PD_Controller_vel:
     def __init__(self, joint_name, Kp, Kd):
         self.error = 0
         self.old_error = 0
