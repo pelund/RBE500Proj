@@ -9,7 +9,7 @@ from rbe_proj.srv import *
 def joint_vel_rev_client(vtheta1, vtheta2,vd3, theta1, theta2):
     rospy.wait_for_service('joint_vel_rev')
     try:
-        joint_vel_forward = rospy.ServiceProxy('joint_vel_rev', JointVelRev)
+        joint_vel_rev = rospy.ServiceProxy('joint_vel_rev', JointVelRev)
         
         resp1 = joint_vel_rev(vx, vy,vz, theta1, theta2) 
         return resp1
