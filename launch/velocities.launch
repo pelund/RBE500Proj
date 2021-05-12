@@ -1,0 +1,4 @@
+<launch>
+	<node name="joint_vel_forward_server" pkg="rbe_proj" type="joint_vel_forward_server.py" output="screen"/>
+	<node name="joint_vel_rev_server" pkg="rbe_proj" type="joint_vel_rev_server.py" output="screen"/>
+</launch>

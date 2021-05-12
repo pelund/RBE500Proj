@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<robot name="origins">
+  <link name="world"/>
+	<!-- <link name="base_link">
+   		<visual>
+     			<geometry>
+       				<box size="0 0 0"/>
+     			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+   		</visual>
+		<collision>
+			<geometry>
+       				<box size="0 0 0"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="100"/>
+	 		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>			
+   </link> -->
+
+   <joint name="joint_1" type="fixed">
+    <parent link="world"/>
+    <child link="link_1"/>
+    <origin rpy="0  0  0" xyz="0 0 0"/>
+    <axis xyz="0  0  1"/>
+    <!-- <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/> -->
+  </joint>
+   
+   <link name="link_1">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
+    </inertial>
+    <collision name="Better_Robot_Arm__collision">
+      <origin rpy="0  0  0" xyz="0 0 2.5"/>
+      <geometry>
+        <cylinder length="5" radius="0.5"/>
+      </geometry>
+    </collision>
+    <visual name="Better_Robot_Arm__visual">
+      <origin rpy="0  0  0" xyz="0 0 2.5"/>
+      <geometry>
+        <cylinder length="5" radius="0.3"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <origin rpy="0  0  1" xyz="0 0 5.5"/>
+    <axis xyz="0  0  1"/>
+    <limit effort="1000000" lower="-3.14" upper="3.14" velocity="1000000"/>
+  </joint>
+  
+  <link name="link_2">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667"/>
+    </inertial>
+    <collision name="Better_Robot_Arm__collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <box size="1 1 1"/>
+      </geometry>
+    </collision>
+    <visual name="Better_Robot_Arm__visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <box size="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="joint_3" type="fixed">
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <origin rpy="0  1.57  0" xyz="3 0 0"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+
+  <link name="link_3">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
+    </inertial>
+    <collision name="Better_Robot_Arm__collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="5" radius="0.3"/>
+      </geometry>
+    </collision>
+    <visual name="Better_Robot_Arm__visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="5" radius="0.3"/>
+      </geometry>
+    </visual>
+  </link> 
+
+  <joint name="joint_4" type="fixed">
+    <parent link="link_3"/>
+    <child link="link_4"/>
+    <origin rpy="0   -1.57  0" xyz="2.38000000e-03   0.00000000e+00   3.00000000e+00"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+
+  <link name="link_4">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
+    </inertial>
+    <collision name="Better_Robot_Arm__collision">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="1" radius="0.5"/>
+      </geometry>
+    </collision>
+    <visual name="Better_Robot_Arm__visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <cylinder length="1" radius="0.5"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="joint_5" type="revolute">
+    <parent link="link_4"/>
+    <child link="link_5"/>
+    <origin rpy="0  0  0" xyz="0  0  0"/>
+    <axis xyz="0  0  1"/>
+    <limit effort="1000000" lower="-3.14" upper="3.14" velocity="1000000"/>   <!--changed from -1 to very high-->
+  </joint>
+
+  <link name="link_5">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667"/>
+    </inertial>
+    <collision name="Better_Robot_Arm__collision">
+      <origin rpy="0  0  0" xyz="2  0  0"/>
+      <geometry>
+        <box size="3 0.75 0.75"/>            <!--Link sizes changed-->
+      </geometry>
+    </collision>
+    <visual name="Better_Robot_Arm__visual">
+      <origin rpy="0  0  0" xyz="2  0  0"/>  <!--x:1 to 2-->
+      <geometry>
+        <box size="3 0.75 0.75"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="joint_6" type="prismatic">
+    <parent link="link_5"/>
+    <child link="link_6"/>
+    <origin rpy="0  0  0" xyz="3.75      0      1"/>  <!-- neg 0.6 to 1-->
+    <axis xyz="0 0 -1"/>
+    <limit effort="1000000" lower="-3" upper="3" velocity="1000000"/>
+  </joint>
+
+  <link name="link_6">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667"/>
+    </inertial>
+    <collision name="Better_Robot_Arm__collision">
+      <origin rpy="0  0  0" xyz="0  0  1"/>        
+      <geometry>
+        <box size="0.5 0.5 4"/>
+      </geometry>
+    </collision>
+    <visual name="Better_Robot_Arm__visual">
+      <origin rpy="0  0  0" xyz="0  0  1"/>      
+      <geometry>
+        <box size="0.5 0.5 4"/>
+      </geometry>
+    </visual>
+  </link>
+
+    <!-- ros_control plugin -->
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/SCARA</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo>
+  
+    <!-- Link1 -->
+    <gazebo reference="link_1">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+  
+    <!-- Link2 -->
+    <gazebo reference="link_2">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Black</material>
+    </gazebo>
+  
+    <!-- Link3 -->
+    <gazebo reference="link_3">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Orange</material>
+    </gazebo>
+
+    <!-- Link4 -->
+    <gazebo reference="link_4">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Orange</material>
+    </gazebo>
+
+    <!-- Link5 -->
+    <gazebo reference="link_5">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Orange</material>
+    </gazebo>
+
+    <!-- Link6 -->
+    <gazebo reference="link_6">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Orange</material>
+    </gazebo>
+</robot>
