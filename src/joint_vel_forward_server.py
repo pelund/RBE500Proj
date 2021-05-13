@@ -17,7 +17,7 @@ def handle_joint_vel_forward(req):
     a1 = 5.5
     a2 = 6
     L3 = 3.75    #changed from 0.6 to 3
-    J = numpy.array([[(-1*a1*numpy.sin(theta1)-a2*numpy.sin(theta1+theta2)), -1*a2*numpy.sin(theta1 + theta2), 0],[a1*numpy.cos(theta1)+a2*numpy.cos(theta1+theta2), a2 * numpy.cos(theta1 + theta2), 0] ,[0,0,-1]])
+    J = numpy.array([[((-1*a1*numpy.sin(theta1))-(a2*numpy.sin(theta1+theta2))), -1*a2*numpy.sin(theta1 + theta2), 0],[(a1*numpy.cos(theta1))+(a2*numpy.cos(theta1+theta2)), a2 * numpy.cos(theta1 + theta2), 0] ,[0,0,-1]])
     q = numpy.array([[vtheta1],[vtheta2],[vd3]])
     # p = numpy.multiply(J,q)
     p = numpy.dot(J, q)
