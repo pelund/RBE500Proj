@@ -74,9 +74,9 @@ if __name__ == '__main__':
 
     rospy.init_node('joint_controller')
     position_reached = False
-    pd_controller1 = PD_Controller('joint_2', 500, 1000)
-    pd_controller2 = PD_Controller('joint_5', 15, 30)
-    pd_controller3 = PD_Controller('joint_6', 30, 100)
+    pd_controller1 = PD_Controller('joint_2', 10, 120)
+    pd_controller2 = PD_Controller('joint_5', 10, 40)
+    pd_controller3 = PD_Controller('joint_6', 15, 20)
 
     while position_reached == False:
         joint_2properties = rospy.ServiceProxy('/gazebo/get_joint_properties',GetJointProperties)
@@ -91,9 +91,9 @@ if __name__ == '__main__':
         current_joint_5position = current_joint_5properties.position[0]
         current_joint_6position = current_joint_6properties.position[0]
         # print(current_joint_position)
-        desired_joint_2position = 2
-        desired_joint_5position = 1.5
-        desired_joint_6position = 0
+        desired_joint_2position = 0.8
+        desired_joint_5position = 0.8
+        desired_joint_6position = 0.2
 
         pd_controller1.PD(current_joint_2position, desired_joint_2position)
         pd_controller2.PD(current_joint_5position, desired_joint_5position)
