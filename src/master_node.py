@@ -54,7 +54,7 @@ if __name__ == '__main__':
         print('Current velocities for q1, q2 and their current postiions are: ', current_vtheta1, current_vtheta2, current_theta1, current_theta2)
 
         desired_jvs = JointVelRevResponse()
-        desired_jvs = joint_vel_rev(0, 1, 0, current_theta1, current_theta2)    #Stores the desired joint velocities
+        desired_jvs = joint_vel_rev(0, 0.5, 0, current_theta1, current_theta2)    #Stores the desired joint velocities
         desired_vtheta1 = desired_jvs.vtheta1
         desired_vtheta2 = desired_jvs.vtheta2
         desired_vd3 = desired_jvs.vd3   

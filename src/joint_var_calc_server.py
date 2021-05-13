@@ -18,7 +18,7 @@ def handle_joint_var_calc(req):
     D1_b = -(2 * r * xc)
     D1_a = pow(xc, 2)+pow(yc, 2)
     D1_c = pow(r, 2)-pow(yc, 2)
-    # print(D1_a, D1_b, D1_c)
+    print(D1_a, D1_b, D1_c)
     D1_numerator = -D1_b + sqrt(pow(D1_b, 2) - (4* D1_a * D1_c))
     D1_denominator = 2 * D1_a
     D1 = D1_numerator / D1_denominator

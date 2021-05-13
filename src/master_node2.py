@@ -39,7 +39,7 @@ if __name__ == '__main__':
     
     #Trajectory generation approach =========================================================================#
 
-    end_eff_actual = link_state("link_6", "link_1")                         #Gets the end_effector position
+    end_eff_actual = link_state("link_6", "link")                         #Gets the end_effector position
     y_actual = end_eff_actual.link_state.pose.position.y
     x_actual = end_eff_actual.link_state.pose.position.x
     z_actual = end_eff_actual.link_state.pose.position.z
@@ -55,14 +55,14 @@ if __name__ == '__main__':
 
     while (i > yi-4):
         #create controller
-        end_eff_actual = link_state("link_6", "link_1")                         #Gets the end_effector position
+        end_eff_actual = link_state("link_6", "link")                         #Gets the end_effector position
         y_actual2 = end_eff_actual.link_state.pose.position.y
         x_actual2 = end_eff_actual.link_state.pose.position.x
         z_actual2 = end_eff_actual.link_state.pose.position.z
 
         joint_var_calc = rospy.ServiceProxy('joint_var_calc', JointVarCalc)
         IK = JointVarCalcResponse()
-        IK = joint_var_calc(x_actual,i,z_actual,5.5,6,5)
+        IK = joint_var_calc(x_actual,i,z_actual, 5.5, 6, 0)
         t1 = IK.theta1
         t2 = IK.theta2
         d3 = IK.d3out
